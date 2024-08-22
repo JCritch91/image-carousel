@@ -1,33 +1,28 @@
-import './style.css'
-import { createDemoPictures } from "./newPicture"
-import { displayPicture } from "./displayPicture"
+import "./style.css";
+import { createDemoPictures } from "./newPicture";
+import { displayPicture } from "./displayPicture";
 import { changeOrder } from "./changeOrder";
 
-function initialise(){
+function initialise() {
+  const navButtons = document.querySelectorAll("button");
+  const pictureArray = [];
 
-    const navButtons = document.querySelectorAll('button')
-    const pictureArray = []
+  createDemoPictures(pictureArray);
+  displayPicture(pictureArray);
 
-    createDemoPictures(pictureArray)
-    displayPicture(pictureArray)
-
-     
-
-    navButtons.forEach(button => {
-        button.addEventListener('click', (e)=>{
-            changeOrder(pictureArray, e.target.id)
-            displayPicture(pictureArray)
-        })
+  navButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      changeOrder(pictureArray, e.target.id);
+      displayPicture(pictureArray);
     });
+  });
 
-    function autoScroll(){
-        changeOrder(pictureArray, 'rightButton')
-        displayPicture(pictureArray)
-        
-    }
+  function autoScroll() {
+    changeOrder(pictureArray, "rightButton");
+    displayPicture(pictureArray);
+  }
 
-    setInterval(autoScroll, 3000) 
-
+  setInterval(autoScroll, 3000);
 }
 
-initialise()
+initialise();
