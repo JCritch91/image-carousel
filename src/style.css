@@ -1,0 +1,56 @@
+body{
+    height: 100vh;
+    width: 100wv;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+.pictureContainer{
+    display: flex;
+
+}
+
+.pictureFrame{
+    display: flex;
+    height: 70vh;
+    width: 20vw;
+    overflow: hidden;
+}
+
+.pictureCarousel{
+    display: flex;
+    height: 100%;
+    width: 200000000000px ;
+}
+
+.picture{
+    height: 70vh;
+    width: 20vw;
+    background-position: center;
+    background-size: cover;
+}
+
+button{
+    height: 70vh;
+}
+
+.dotContainer{
+    width: 20vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+
+.current{
+    background-color: red;
+}
+
+.dotButton{
+    width: 5px;
+    height: 5px;
+}
