@@ -1,5 +1,5 @@
 function dotSelection(pictureArray, e) {
-  let id = e.target.id.slice(-1);
+  let id = e;
 
   let unsortedArray = pictureArray.sort((a, b) => a.id - b.id);
 

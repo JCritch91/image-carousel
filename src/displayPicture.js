@@ -17,7 +17,7 @@ function displayPicture(pictureArray) {
       button.classList.add("current");
     }
     button.addEventListener("click", (e) => {
-      dotSelection(unsortedArray, e);
+      dotSelection(unsortedArray, e.target.id.slice(-1));
       displayPicture(unsortedArray);
     });
     dotContainer.appendChild(button);
@@ -25,15 +25,15 @@ function displayPicture(pictureArray) {
 
   let sortedArray = pictureArray.sort((a, b) => a.position - b.position);
 
-  for (let i = 0; i < sortedArray.length; i++) {
+  for (let i = 0; i < pictureArray.length; i++) {
     let div;
 
     div = document.createElement("div");
-    div.setAttribute("id", sortedArray[i].id);
-    div.classList.add("picture", "position" + sortedArray[i].position + "'");
+    div.setAttribute("id", pictureArray[i].id);
+    div.classList.add("picture", "position" + pictureArray[i].position + "'");
 
-    if (sortedArray[i].position == "0") {
-      div.style.backgroundImage = `url(${sortedArray[i].url})`;
+    if (pictureArray[i].position == "0") {
+      div.style.backgroundImage = `url(${pictureArray[i].url})`;
     }
     pictureCarousel.appendChild(div);
   }
