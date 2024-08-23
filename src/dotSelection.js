@@ -13,7 +13,7 @@ function dotSelection(pictureArray, e) {
     return unsortedArray;
   };
 
-  while (unsortedArray[id].position !== 0) {
+  while (unsortedArray.length > 0 && unsortedArray[id].position !== 0) {
     loopPictures();
   }
 }

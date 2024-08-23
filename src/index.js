@@ -5,15 +5,30 @@ import { changeOrder } from "./changeOrder";
 import { controlMenu } from "./controlMenu";
 import { addNewPic } from "./addNewPic";
 import { deletePic } from "./deletePic";
+import { storageAvailable, updateStorage } from "./storage";
 
 function initialise() {
   const navButtons = document.querySelectorAll(".navButton");
   const addImageButton = document.querySelector(".addImageButton");
   const submitImageButton = document.querySelector(".submitImageButton");
   const deletePicButton = document.getElementById("deletePicButton");
-  const pictureArray = [];
+  let pictureArray = [];
 
-  createDemoPictures(pictureArray);
+  if (storageAvailable("localStorage")) {
+    if (!localStorage.getItem("pictureArray")) {
+      createDemoPictures(pictureArray);
+      updateStorage("pictureArray", pictureArray);
+    } else {
+      let storedpictureArray = JSON.parse(localStorage.getItem("pictureArray"));
+      pictureArray = storedpictureArray;
+      if (pictureArray.length == 0) {
+        createDemoPictures(pictureArray);
+      }
+    }
+  } else {
+    createDemoPictures(pictureArray);
+  }
+
   displayPicture(pictureArray);
 
   navButtons.forEach((button) => {
@@ -35,6 +50,7 @@ function initialise() {
 
   deletePicButton.addEventListener("click", (e) => {
     deletePic(pictureArray);
+    updateStorage("pictureArray", pictureArray);
     displayPicture(pictureArray);
   });
 
